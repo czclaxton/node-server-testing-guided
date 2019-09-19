@@ -8,8 +8,11 @@ module.exports = {
   findById,
 };
 
+
 async function insert(hobbit) {
-  return null;
+  const [id] = await db('hobbits').insert(hobbit);
+
+  return db('hobbits').where({ id }).first();
 }
 
 async function update(id, changes) {
